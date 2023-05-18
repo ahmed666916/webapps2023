@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'register',
     'payapp',
+    
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,12 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'webapps2023.urls'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 
 TEMPLATES = [
     {

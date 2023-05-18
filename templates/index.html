@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<body>
 
-<h1>Basic Template</h1>
-<p>The paragraph! </p>
 
-</body>
-</html> 
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to the Payment Service</h1>
+    <p>This is the main landing page of the website.</p>
+{% endblock %}
