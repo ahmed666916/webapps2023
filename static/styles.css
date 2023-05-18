@@ -36,7 +36,11 @@ footer {
     background-color: #333;
     padding: 10px;
     text-align: center;
+    color: white;
+    
 }
+
+
 
 /* Additional styles for index.html */
 h1 {
