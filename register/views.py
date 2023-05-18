@@ -1,43 +1,32 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from .forms import RegistrationForm, LoginForm
 
 def register(request):
     if request.method == 'POST':
-        # Handle the form submission and registration logic here
-        # Retrieve the form data using request.POST
-        # Perform validation, create a new user, etc.
-        # Redirect the user to a success page or perform any other desired action
-
-        # Example: 
-        username = request.POST.get('username')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        currency = request.POST.get('currency')
-
-        # Perform your registration logic here
-
-        return render(request, 'registration_success.html')
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('registration_success')
     else:
-        return render(request, 'register.html')
-    
-def login(request):
+        form = RegistrationForm()
+    return render(request, 'register.html', {'form': form})
+
+def registration_success(request):
+    return render(request, 'registration_success.html')
+
+def user_login(request):
     if request.method == 'POST':
-        # Handle the form submission and login logic here
-        # Retrieve the form data using request.POST
-        # Perform validation, authenticate the user, etc.
-        # Redirect the user to a dashboard or perform any other desired action
-
-        # Example:
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        # Perform your login logic here
-
-        return render(request, 'dashboard.html')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('dashboard')
+            else:
+                form.add_error(None, 'Invalid login credentials')
     else:
-        return render(request, 'login.html')
-
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})

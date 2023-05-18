@@ -26,9 +26,9 @@ urlpatterns = [
     
     
     path('', TemplateView.as_view(template_name='index.html')),
-    path('register/', register, name='register'),
-    path('login/', login, name='login'),
+    path('register/', include('register.urls')),
     
+   
 
     
 ]
