@@ -79,3 +79,39 @@ p {
 .button:hover {
     background-color: #555; /* Darker color on hover */
 }
+
+/* Responsive Styles */
+
+/* Mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .button-container {
+        flex-wrap: wrap;
+    }
+
+    .button {
+        margin: 5px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .container {
+        max-width: 600px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    .container {
+        max-width: 800px;
+    }
+}
