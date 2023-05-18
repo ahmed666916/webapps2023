@@ -5,11 +5,10 @@
     <p>This is the main landing page of the website.</p>
     <!-- ... existing code ... -->
 
-    <div class="button-container">
-        <a href="#" class="button button-register">Register</a>
-        <a href="#" class="button button-login">Login</a>
-    </div>
-  
+    <div class="buttons-container">
+        <a href="{% url 'register' %}" class="btn-register">Register</a>
+        <a href="{% url 'login' %}" class="btn-login">Login</a>
+      </div>
   <!-- ... existing code ... -->
   
 {% endblock %}
