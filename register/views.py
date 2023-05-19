@@ -6,11 +6,14 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.balance = user.balance * user.gbp_to_usd_rate
+            user.save()
             return redirect('registration_success')
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
+
 
 def registration_success(request):
     return render(request, 'registration_success.html')

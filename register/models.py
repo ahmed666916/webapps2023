@@ -17,6 +17,7 @@ class User(models.Model):
     )
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    gbp_to_usd_rate = models.DecimalField(max_digits=10, decimal_places=4, default=0.0)
 
     def __str__(self):
         return self.username

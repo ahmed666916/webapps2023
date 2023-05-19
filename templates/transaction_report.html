@@ -1,0 +1,35 @@
+<!-- transaction_report.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Transaction Report</h2>
+  {% if transactions %}
+    <table>
+      <thead>
+        <tr>
+          <th>Sender</th>
+          <th>Recipient</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in transactions %}
+          <tr>
+            <td>{{ transaction.sender }}</td>
+            <td>{{ transaction.recipient }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.timestamp }}</td>
+            <td>{{ transaction.type }}</td>
+            <td>{{ transaction.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No transactions found.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+<!-- make_payment.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Make Payment</h2>
+  <form method="post" action="{% url 'make_payment' %}">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="recipient">Recipient:</label>
+      <select name="recipient" id="recipient" class="form-control">
+        <option value="" selected disabled>Select recipient</option>
+        {% for user in users %}
+          <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input type="number" name="amount" id="amount" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Make Payment</button>
+  </form>
+{% endblock %}
