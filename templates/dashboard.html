@@ -9,4 +9,15 @@
             <li>{{ transaction.sender.username }} sent {{ transaction.amount }} {{ transaction.sender.currency }} to {{ transaction.recipient.username }}</li>
         {% endfor %}
     </ul>
+
+    <h2>Notifications:</h2>
+    <ul>
+        {% for notification in notifications %}
+            <li>{{ notification }}</li>
+        {% endfor %}
+    </ul>
+    
+
+    <a href="{% url 'payapp:make_payment' %}" class="btn btn-primary">Make Payment</a>
+    <a href="{% url 'payapp:transaction_report' %}" class="btn btn-primary">Transaction Report</a>
 {% endblock %}

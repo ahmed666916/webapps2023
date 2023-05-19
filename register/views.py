@@ -1,6 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import RegistrationForm, LoginForm
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def dashboard(request):
+    # Add logic to retrieve user's transactions, notifications, and other details
+    # Example code:
+    user = request.user
+    transactions = user.sent_transactions.all() | user.received_transactions.all()
+    notifications = user.notifications.all()
+    
+    context = {
+        'transactions': transactions,
+        'notifications': notifications
+    }
+    return render(request, 'register/dashboard.html', context)
 
 def register(request):
     if request.method == 'POST':
