@@ -1,31 +1,56 @@
-{% extends 'base.html' %}
+{% load static %}
 
-{% block content %}
-  <h1>Register</h1>
-  <form method="POST" action="{% url 'register' %}">
-    {% csrf_token %}
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name" required>
-    <br>
-    <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name" required>
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <label for="currency">Currency:</label>
-    <select id="currency" name="currency" required>
-      <option value="GBP">British Pound</option>
-      <option value="USD">US Dollar</option>
-      <option value="EUR">Euro</option>
-    </select>
-    <br>
-    <input type="submit" value="Register">
-  </form>
-{% endblock %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration or Sign Up form in HTML CSS | CodingLab</title> 
+    <link rel="stylesheet" type="text/css" href="{% static 'reg.css' %}">
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <h2>Registration</h2>
+      <form action="#">
+        <div class="input-box">
+          <input type="text" placeholder="Enter your username" required>
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Enter your first name" required>
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Enter your last name" required>
+        </div>
+        <div class="input-box">
+          <input type="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Create password" required>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Confirm password" required>
+        </div>
+        <div class="input-box">
+          <select required>
+            <option value="" disabled selected>Select your currency</option>
+            <option value="GBP">GB Pounds</option>
+            <option value="USD">US Dollars</option>
+            <option value="EUR">Euros</option>
+          </select>
+        </div>
+        <div class="policy">
+          <input type="checkbox" required>
+          <h3>I accept all terms & condition</h3>
+        </div>
+        <div class="input-box button">
+          <input type="submit" value="Register Now">
+        </div>
+        <div class="text">
+          <h3>Already have an account? <a href="#">Login now</a></h3>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
