@@ -10,12 +10,12 @@ def dashboard(request):
     user = request.user
     transactions = user.sent_transactions.all() | user.received_transactions.all()
     notifications = user.notifications.all()
-    
+
     context = {
         'transactions': transactions,
         'notifications': notifications
     }
-    return render(request, 'register/dashboard.html', context)
+    return render(request, 'dashboard.html', context)
 
 def register(request):
     if request.method == 'POST':
@@ -24,6 +24,7 @@ def register(request):
             user = form.save(commit=False)
             user.balance = user.balance * user.gbp_to_usd_rate
             user.save()
+            login(request, user)
             return redirect('registration_success')
     else:
         form = RegistrationForm()
